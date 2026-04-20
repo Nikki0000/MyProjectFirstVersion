@@ -23,6 +23,12 @@ dotnet restore AutoWrapPlatform.sln
 ```
 
 ### 1) Настройка backend подключения к БД
+Создай локальный файл настроек из шаблона:
+
+```powershell
+Copy-Item src/AutoWrap.Platform.Api/appsettings.Development.example.json src/AutoWrap.Platform.Api/appsettings.Development.json
+```
+
 Открой файл:
 - `src/AutoWrap.Platform.Api/appsettings.Development.json`
 

@@ -17,3 +17,6 @@ obj/
 node_modules/
 dist/
 .env
+
+# Local app settings with secrets
+**/appsettings.Development.json
