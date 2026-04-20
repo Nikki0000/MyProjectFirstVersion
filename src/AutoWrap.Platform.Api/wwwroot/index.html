@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoWrap | Вход</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+  <div class="auth-layout">
+    <section class="brand-panel">
+      <h1>AutoWrap</h1>
+      <p>Платформа для взаимодействия владельцев авто, исполнителей оклейки и рекламодателей.</p>
+      <ul>
+        <li>Публикация и поиск заказов</li>
+        <li>Отклики и избранное</li>
+        <li>Личный кабинет с ролями</li>
+      </ul>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab active">Вход</button>
+        <button id="tab-register" class="tab">Регистрация</button>
+      </div>
+
+      <form id="login-form" class="form active" novalidate>
+        <h2>Войти в систему</h2>
+        <label> Email
+          <input id="login-email" type="email" placeholder="you@example.com" required />
+        </label>
+        <label> Пароль
+          <input id="login-password" type="password" placeholder="Введите пароль" required />
+        </label>
+        <button type="submit">Войти</button>
+        <p class="help">Демо: customer@demo.local / Demo123!</p>
+      </form>
+
+      <form id="register-form" class="form" novalidate>
+        <h2>Создать аккаунт</h2>
+        <label> Имя
+          <input id="reg-name" type="text" placeholder="Иван Иванов" required />
+        </label>
+        <label> Email
+          <input id="reg-email" type="email" placeholder="you@example.com" required />
+        </label>
+        <label> Пароль
+          <input id="reg-password" type="password" placeholder="Минимум 6 символов" required />
+        </label>
+        <label> Роль
+          <select id="reg-role">
+            <option value="1">Заказчик (создаю заказы)</option>
+            <option value="2">Исполнитель (откликаюсь на заказы)</option>
+          </select>
+        </label>
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+
+      <div id="auth-error" class="error"></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script type="module" src="/js/auth-page.js"></script>
+</body>
+</html>

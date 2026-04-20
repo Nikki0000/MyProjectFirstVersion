@@ -1,0 +1,81 @@
+﻿.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.brand-panel {
+  background: linear-gradient(160deg, #0f172a, #0f766e);
+  color: #f8fafc;
+  padding: 56px;
+}
+
+.brand-panel h1 {
+  font-size: 44px;
+}
+
+.brand-panel p,
+.brand-panel li {
+  color: #cbd5e1;
+  font-size: 17px;
+}
+
+.auth-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.tab.active {
+  background: #0f766e;
+  color: #fff;
+}
+
+.form {
+  display: none;
+  background: #fff;
+  border: 1px solid #d9e2ec;
+  border-radius: 16px;
+  padding: 18px;
+  gap: 10px;
+}
+
+.form.active {
+  display: grid;
+}
+
+.help {
+  color: #64748b;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-panel {
+    padding: 32px 22px;
+  }
+
+  .auth-panel {
+    padding: 16px;
+  }
+}
+

@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: autowrap-db
+    environment:
+      POSTGRES_DB: autowrap_platform_dev
+      POSTGRES_USER: autowrap
+      POSTGRES_PASSWORD: autowrap
+    ports:
+      - "5432:5432"
+    volumes:
+      - autowrap_pg_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: src/AutoWrap.Platform.Api/Dockerfile
+    container_name: autowrap-api
+    depends_on:
+      - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=autowrap_platform_dev;Username=autowrap;Password=autowrap
+      Jwt__Issuer: AutoWrap.Platform.Dev
+      Jwt__Audience: AutoWrap.Platform.Client
+      Jwt__Key: DevKey_ChangeBeforeProduction_ThisIsOnlyForLocalDemo_2026
+      Cors__AllowedOrigins__0: http://localhost:5173
+      Cors__AllowedOrigins__1: http://localhost:8081
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: .
+      dockerfile: src/AutoWrap.Platform.Web/Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8080
+    container_name: autowrap-web
+    depends_on:
+      - api
+    ports:
+      - "8081:80"
+
+volumes:
+  autowrap_pg_data:

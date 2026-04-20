@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoWrap | Платформа</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/platform.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="logo">AutoWrap</div>
+      <nav>
+        <button class="menu-item active" data-tab="feed">Лента заказов</button>
+        <button class="menu-item" data-tab="create">Создать заказ</button>
+        <button class="menu-item" data-tab="my-created">Мои заказы</button>
+        <button class="menu-item" data-tab="my-responded">Мои отклики</button>
+        <button class="menu-item" data-tab="favorites">Избранное</button>
+        <button class="menu-item" data-tab="profile">Профиль</button>
+      </nav>
+    </aside>
+
+    <div class="content-wrap">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Лента заказов</h1>
+          <p id="user-meta" class="muted"></p>
+        </div>
+        <button id="logout-btn" class="secondary">Выйти</button>
+      </header>
+
+      <main>
+        <section class="tab-pane active" id="tab-feed">
+          <div class="card">
+            <div class="filters">
+              <input id="feed-search" type="text" placeholder="Поиск по названию, городу, описанию" />
+              <select id="feed-status">
+                <option value="">Все статусы</option>
+                <option value="Open">Открыт</option>
+                <option value="InProgress">В работе</option>
+                <option value="Completed">Завершен</option>
+                <option value="Cancelled">Отменен</option>
+              </select>
+              <button id="feed-refresh">Обновить</button>
+            </div>
+          </div>
+          <div id="feed-list" class="list"></div>
+          <div id="feed-details" class="card" hidden>
+            <h3>Детали заказа</h3>
+            <pre id="feed-details-box" class="json-box"></pre>
+          </div>
+        </section>
+
+        <section class="tab-pane" id="tab-create">
+          <form id="create-form" class="card" novalidate>
+            <h2>Новый заказ</h2>
+            <label> Заголовок
+              <input id="create-title" required />
+            </label>
+            <label> Описание
+              <textarea id="create-description" required></textarea>
+            </label>
+            <div class="grid-3">
+              <label> Город
+                <input id="create-city" required />
+              </label>
+              <label> Бюджет
+                <input id="create-budget" type="number" min="1" required />
+              </label>
+              <label> Планируемая дата
+                <input id="create-date" type="date" />
+              </label>
+            </div>
+            <button type="submit">Опубликовать заказ</button>
+          </form>
+        </section>
+
+        <section class="tab-pane" id="tab-my-created">
+          <div id="my-created-list" class="list"></div>
+        </section>
+
+        <section class="tab-pane" id="tab-my-responded">
+          <div id="my-responded-list" class="list"></div>
+        </section>
+
+        <section class="tab-pane" id="tab-favorites">
+          <div id="favorites-list" class="list"></div>
+        </section>
+
+        <section class="tab-pane" id="tab-profile">
+          <div class="card">
+            <h2>Профиль</h2>
+            <pre id="profile-box" class="json-box"></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script type="module" src="/js/platform-page.js"></script>
+</body>
+</html>
